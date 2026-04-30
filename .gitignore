@@ -29,7 +29,7 @@ data/*.csv
 !data/.gitkeep
 
 # Chapter 4 (local only)
-chapters/ch04_diabetes/
+
 
 # Books / PDFs
 *.pdf
