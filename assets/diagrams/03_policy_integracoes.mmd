@@ -1,0 +1,8 @@
+flowchart TB
+    subgraph Nucleo["Núcleo do pysdm"]
+        Pol["Policy: decide / update"]
+    end
+    Pol -->|injeta| Solver["SolverBackend<br/>scipy / OR-Tools / cvxpy"]
+    Pol -->|injeta| VF["ValueFunctionApproximator<br/>tabela / sklearn / rede neural"]
+    Pol -->|embrulha| RL["RLPolicyAdapter<br/>agente treinado - stable-baselines3, RLlib..."]
+    Env["GymEnvAdapter"] -.->|expõe o Model como gymnasium.Env, para treinar o agente| RL

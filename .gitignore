@@ -7,6 +7,20 @@ dist/
 build/
 *.egg
 
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Local agent config
+.claude/
+
+# Local reports (not part of the package)
+PROPOSAL.md
+RELATORIO_ALTERACOES.md
+
 # Virtual environments
 .venv/
 venv/

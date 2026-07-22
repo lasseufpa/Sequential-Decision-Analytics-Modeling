@@ -1,0 +1,21 @@
+sequenceDiagram
+    participant Sim as Simulator
+    participant Pol as Policy
+    participant Mod as Model
+
+    Sim->>Mod: initial_state()
+    Mod-->>Sim: S^0
+
+    loop a cada passo n = 0 .. N-1
+        Sim->>Pol: decide(S^n)
+        Pol-->>Sim: x^n
+        Sim->>Mod: exogenous_info(S^n, x^n, rng)
+        Mod-->>Sim: W^{n+1}
+        Sim->>Mod: objective(S^n, x^n, W^{n+1})
+        Mod-->>Sim: recompensa
+        Sim->>Mod: transition(S^n, x^n, W^{n+1})
+        Mod-->>Sim: S^{n+1}
+        Sim->>Pol: update(S^n, x^n, W^{n+1}, S^{n+1})
+    end
+
+    Sim-->>Sim: repete tudo por K episódios (sample paths)

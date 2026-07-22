@@ -1,0 +1,10 @@
+flowchart LR
+    subgraph Problema
+        M[Model]
+    end
+    subgraph Estrategia
+        P[Policy]
+    end
+    S[Simulator] -->|usa| M
+    S -->|usa| P
+    S -->|produz| R[SimulationResult]
